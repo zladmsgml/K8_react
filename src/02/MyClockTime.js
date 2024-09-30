@@ -1,12 +1,17 @@
-function MyClockTime(){
-  let today = new Date();
-  today = today.toLocaleString();
+import { useState, useEffect} from "react";
 
+function MyClockTime(){
+  const [cTime, setCTime] = useState(new Date());
+  useEffect(()=>{
+    const tm = setInterval(() => {
+      setCTime(new Date())      
+    }, 1000);
+
+    return () => {clearInterval(tm)};
+  },[]);
   return(
-    <div>
-      <p>
-        {today}
-      </p>
+    <div  className='w-full flex justify-center items-center'>
+      {cTime.toLocaleTimeString()}
     </div>
   );
 }
