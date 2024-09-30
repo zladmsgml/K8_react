@@ -9,8 +9,9 @@ export default function TailButton({caption, color, handleClick}) {
     'orange' : 'hover:bg-orange-600'
   };
 
-
+  
   return (
+    
     <button className={`inline-flex justify-center items-center
                     p-3 mx-2
                     ${btColor[color]} text-white
