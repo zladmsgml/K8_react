@@ -8,7 +8,8 @@ import { ImHome } from "react-icons/im";
 //import Lotto from './05/Lotto';
 //import FoodMain from './06/FoodMain';
 //import FoodCard from './06/FoodCard';
-import BoxOffice from './07/BoxOffice_1';
+//import BoxOffice from './07/BoxOffice';
+import MyBox from './08/MyBox';
 
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
           {/* <Lotto /> */}
           {/* FoodMain
           <FoodMain/> */}
-          <BoxOffice/>
+          {/* <BoxOffice/> */}
+          <MyBox/>
        
       </main>
       <footer className='w-full h-20

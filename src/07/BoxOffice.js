@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import BoxOfficeTr from "./BoxOfficeTr";
+//import { TbFoldDown } from "react-icons/tb";
 
 export default function BoxOffice() {
+  const [info,setInfo]=useState();
   const [tdata, setTdata] = useState();
-  const [trs, setTrs]= useState();
+  const [trs, setTrs] = useState();
   const getFetchData = () => {
 
     const apiKey = process.env.REACT_APP_MV_KEY;
@@ -27,48 +29,59 @@ export default function BoxOffice() {
     getFetchData();
   }, []);
 
-  const handleTrClick = (it)
+  const handleTrClick = (item) => {
+    console.log(item);
+    let tm = `[${item.movieCd} ${item.movieNm} : 누적관객수 ${parseInt(item.audiCnt).toLocaleString()}명 입니다.]`;
+    setInfo(tm);
+  }
 
   //fetch 데이터가 채워지면 useEffect가 실행
   useEffect(() => {
-    if(!tdata) return;
-    console.log('tdata',tdata);
+    if (!tdata) return;
+    console.log('tdata', tdata);
     let tm = tdata.map(item => <BoxOfficeTr
-                              handleClick = {()=> handleTrClick(item)}
-                              mv={item}
-                              key={item.movieCd}/>)
+      handleClick={() => handleTrClick(item)}
+      mv={item}
+      key={item.movieCd} />)
     setTrs(tm);
   }, [tdata])
 
 
   return (
     <div className="h-screen flex flex-col justify-center items-center">
-     
-     <div className="flex flex-col">
-  <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-      <div className="overflow-hidden">
-        <table
-          className="min-w-full text-left text-sm font-light text-surface dark:text-white">
-          <thead
-            className="border-b border-neutral-200 font-medium dark:border-white/10">
-            <tr>
-              <th scope="col" className="px-6 py-4">순위</th>
-              <th scope="col" className="px-6 py-4">영화명</th>
-              <th scope="col" className="px-6 py-4">매출액</th>
-              <th scope="col" className="px-6 py-4">관객수</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            {trs}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
 
+      <div className="flex flex-col">
+        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div className="overflow-hidden">
+              <table
+                className="min-w-full text-left text-sm font-light text-surface dark:text-white">
+                <thead
+                  className="border-b border-neutral-200 font-medium dark:border-white/10">
+                  <tr>
+                    <th scope="col" className="px-6 py-4">순위</th>
+                    <th scope="col" className="px-6 py-4">영화명</th>
+                    <th scope="col" className="px-6 py-4">매출액</th>
+                    <th scope="col" className="px-6 py-4">관객수</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  {trs}
+                </tbody>
+                <tfoot>
+                  <tr className="bg-black text-white 
+                                  text-center
+                                  h-10 p-2">
+                    <td colSpan={5}>{info}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-      )
+
+    </div>
+  )
 }
