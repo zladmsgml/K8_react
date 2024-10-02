@@ -9,7 +9,8 @@ import { ImHome } from "react-icons/im";
 //import FoodMain from './06/FoodMain';
 //import FoodCard from './06/FoodCard';
 //import BoxOffice from './07/BoxOffice';
-import MyBox from './08/MyBox';
+//import MyBox from './08/MyBox';
+import TrafficMain from './09/TrafficMain';
 
 
 function App() {
@@ -38,8 +39,8 @@ function App() {
           {/* FoodMain
           <FoodMain/> */}
           {/* <BoxOffice/> */}
-          <MyBox/>
-       
+          {/* <MyBox/> */}
+          <TrafficMain/>
       </main>
       <footer className='w-full h-20
                          flex justify-center items-center
