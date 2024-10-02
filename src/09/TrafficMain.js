@@ -34,9 +34,9 @@ export default function TrafficMain() {
   },[tdata])
 
   return (
-    <div className="w-full h-full flex items-start m-5 justify-center">
-      
-      <TrafficNav/>
+    <div className="w-full p-5 h-full flex-col items-start m-5 justify-center">
+      <TrafficNav title='대분류' c={['1','2']}/>
+      <TrafficNav title='중분류' c={['3','4']}/>
     </div>
   )
 }
