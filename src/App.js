@@ -10,7 +10,8 @@ import { ImHome } from "react-icons/im";
 //import FoodCard from './06/FoodCard';
 //import BoxOffice from './07/BoxOffice';
 //import MyBox from './08/MyBox';
-import TrafficMain from './09/TrafficMain';
+//import TrafficMain from './09/TrafficMain';
+import MyRef from './10/MyRef';
 
 
 function App() {
@@ -40,7 +41,8 @@ function App() {
           <FoodMain/> */}
           {/* <BoxOffice/> */}
           {/* <MyBox/> */}
-          <TrafficMain/>
+          {/* <TrafficMain/> */}
+          <MyRef/>
       </main>
       <footer className='w-full h-20
                          flex justify-center items-center

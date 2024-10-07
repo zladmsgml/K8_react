@@ -1,9 +1,9 @@
 import TailButton from "../UI/TailButton"
-import { useEffect, useState } from "react";
-export default function TrafficNav({title}) {
-  const [sel, setSel] = useState();
 
-  const c = ['차대사람', '차대차', '차량단독', '철길건널목']
+export default function TrafficNav({title,c,sel,setSel}) {
+  //const [sel, setSel] = useState();
+
+  //const c = ['차대사람', '차대차', '차량단독', '철길건널목']
 
   const handleBtClick = (item) =>{
     setSel(item);
@@ -17,9 +17,6 @@ export default function TrafficNav({title}) {
                             />
                           );
   
-    useEffect(()=>{
-       console.log(sel);
-    },[sel])
 
   return (
     <div className="w-10/12 p-5 m-2
