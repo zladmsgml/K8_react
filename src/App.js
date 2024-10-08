@@ -11,7 +11,8 @@ import { ImHome } from "react-icons/im";
 //import BoxOffice from './07/BoxOffice';
 //import MyBox from './08/MyBox';
 //import TrafficMain from './09/TrafficMain';
-import MyRef from './10/MyRef';
+//import MyRef from './10/MyRef';
+import Gallary from './11/Gallary';
 
 
 function App() {
@@ -32,17 +33,18 @@ function App() {
       </header>
       
       <main className='w-full grow
-                       flex flex-col justify-center items-center
+                       flex flex-col justify-start items-center
                        overflow-y-auto'>
           {/* <MyDiv1/> */}
           {/* <MyList/> */}
           {/* <Lotto /> */}
           {/* FoodMain
           <FoodMain/> */}
-          {/* <BoxOffice/> */}
+          {/* <BoxOffice/>n */}
           {/* <MyBox/> */}
           {/* <TrafficMain/> */}
-          <MyRef/>
+          {/* <MyRef/> */}
+          <Gallary/>
       </main>
       <footer className='w-full h-20
                          flex justify-center items-center

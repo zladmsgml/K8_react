@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import BoxOfficeTr from "./BoxOfficeTr";
 //import { TbFoldDown } from "react-icons/tb";
 
@@ -6,10 +6,26 @@ export default function BoxOffice() {
   const [info,setInfo]=useState();
   const [tdata, setTdata] = useState();
   const [trs, setTrs] = useState();
-  const getFetchData = () => {
+ 
+  const dtRef =useRef();
+
+  const getYesterday = () => {
+    const yesterday = new Date(); //const이지만 setter로 바꿀 수 있다.
+    yesterday.setDate(yesterday.getDate() - 1);
+    const year = yesterday.getFullYear();
+    let month = yesterday.getMonth() + 1;
+    let day = yesterday.getDate();
+  
+    month = month < 10 ? '0' + month : month;
+    day = day < 10 ? '0' + day : day;
+  
+    return `${year}-${month}-${day}`;
+  }
+
+  const getFetchData = (dt) => {
 
     const apiKey = process.env.REACT_APP_MV_KEY;
-    const dt = '20240929'
+    //const dt = '20240929'
 
     let url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?`;
     url = `${url}key=${apiKey}&targetDt=${dt}`;
@@ -26,8 +42,17 @@ export default function BoxOffice() {
 
   // //맨처음 한 번 실행, []아무것도 없을 때,호출하지 않았는데 리액트가 실행, 그실행 시점은 []dependency array에 따른다, []없으므로 실행시 한 번만 실행
   useEffect(() => {
-    getFetchData();
+    const ydt = getYesterday();
+    console.log('yesterday=', ydt)
+    dtRef.current.value = ydt;
+    dtRef.current.max = ydt;
+    getFetchData(ydt.replaceAll('-',''));
   }, []);
+
+  const handleDt = () => {
+    const cdt = dtRef.current.value.replaceAll('-','');
+    getFetchData(cdt);
+  }
 
   const handleTrClick = (item) => {
     console.log(item);
@@ -48,9 +73,16 @@ export default function BoxOffice() {
 
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
-
-      <div className="flex flex-col">
+    <div className="w-full h-screen flex flex-col justify-center items-center">
+      <div className="flex w-10/12 h-20 p-5 justify-between gap-5">
+        <div className="font-bold text-2xl"> 
+          박스오피스
+        </div>
+        <div>
+          <input onChange={handleDt} className='form-input' ref={dtRef} type='date' id='dt' name='dt'/>
+        </div>
+      </div>
+      <div className="w-10/12 flex flex-col">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
             <div className="overflow-hidden">
