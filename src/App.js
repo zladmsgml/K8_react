@@ -12,7 +12,8 @@ import { ImHome } from "react-icons/im";
 //import MyBox from './08/MyBox';
 //import TrafficMain from './09/TrafficMain';
 //import MyRef from './10/MyRef';
-import Gallary from './11/Gallary';
+//import Gallary from './11/Gallary';
+import Festival from './12/Festival';
 
 
 function App() {
@@ -44,7 +45,8 @@ function App() {
           {/* <MyBox/> */}
           {/* <TrafficMain/> */}
           {/* <MyRef/> */}
-          <Gallary/>
+          {/* <Gallary/> */}
+          <Festival/>
       </main>
       <footer className='w-full h-20
                          flex justify-center items-center
