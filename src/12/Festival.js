@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
-
+import TailCard from "../UI/TailCard";
 export default function Festival() {
   const [tdata, setTdata]=useState([]);
   const [gunm,setGunm]=useState([]);
-  const [selgu,setSelgu]= useState();
+  const [tags,setTags] = useState([]);
 
   const gu = useRef();
 
@@ -34,6 +34,18 @@ export default function Festival() {
 
   const handleSelect = () =>{
     console.log(gu.current.value)
+    const tm = tdata.filter(item => gu.current.value === item.GUGUN_NM)
+                    .map(item => <TailCard 
+                      key={item.UC_SEQ}                              
+                      imgUrl={item.MAIN_IMG_NORMAL}
+                      title={item.TITLE}                              
+                      content={item.
+                        TRFC_INFO
+                        }
+                      kw={item.PLACE}
+                    />)
+    setTags(tm)
+    console.log(tm);
   }
 
   useEffect(()=>{
@@ -71,8 +83,11 @@ export default function Festival() {
             </select>
             
           </div>
-
+          
         </div>
+        <div className="w-10/12 p-5 grid grid-cols-1 grid-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+            {tags}
+          </div>
       </div>
       {/* <div className="w-10/12 p-5 grid grid-cols-1 grid-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         {tags}
