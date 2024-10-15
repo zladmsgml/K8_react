@@ -17,6 +17,8 @@ import RouteMain from './13/RouteMain';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom"
+import Fcst1 from './14/Fcst1';
+import FcstList from './14/FcstList';
 
 function App() {
   
@@ -46,6 +48,8 @@ function App() {
             <Link to='/gallary'>관광</Link></li>
             <li className='hover:bg-blue-400 hover:text-white rounded-md'>
             <Link to='/fes'>축제</Link></li>
+            <li className='hover:bg-blue-400 hover:text-white rounded-md'>
+            <Link to='/fcst'>일기예보</Link></li>
           </ul>
           <p className='text-4xl font-bold p-5'> 
             <Link to='/home'><ImHome /> </Link>
@@ -64,6 +68,8 @@ function App() {
             <Route path="/traffic" element = {<TrafficMain/>}/>
             <Route path="/gallary" element = {<Gallary/>}/>
             <Route path="/fes" element = {<Festival/>}/>
+            <Route path="/fcst" element = {<Fcst1/>}/>
+            <Route path="/fcstlist" element = {<FcstList/>}/>
             <Route path="/home" element = {<ImHome/>}/>
           </Routes>
       </main>
