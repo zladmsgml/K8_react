@@ -10,6 +10,11 @@ export default function FcstList() {
 
   //form값 참조위한 ref변수
   const selRef = useRef();
+
+  const sky ={'1': '맑음(🌞)', '3':'구름많음(☁)','4':'흐림(🌫)'}
+  const pty ={'0': '없음', '1':'비','2':'비/눈', '3':'눈', '4':'소나기'}
+    
+
   const [sParams]= useSearchParams();
 
 
@@ -43,7 +48,11 @@ export default function FcstList() {
       <td>{code.항목명}({item.category})</td>
       <td>{item.fcstDate.slice(0,4)}-{item.fcstDate.slice(4,6)}-{item.fcstDate.slice(6,8)}</td>
       <td>{item.fcstTime.slice(0,2)}:{item.fcstTime.slice(2,4)}</td>
-      <td>{item.fcstValue}{code.단위}</td>
+      <td>
+        {item.category ==='SKY'? sky[item.fcstValue] : item.category==='PTY'? pty[item.fcstValue]: item.fcstValue +code.단위}
+        
+          
+      </td>
     </tr>)
     setTrs(tm1);
   }

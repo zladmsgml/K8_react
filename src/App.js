@@ -14,6 +14,7 @@ import MyRef from './10/MyRef';
 import Gallary from './11/Gallary';
 import Festival from './12/Festival';
 import RouteMain from './13/RouteMain';
+import RecoilMain from './15/RecoilMain';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom"
@@ -70,6 +71,8 @@ function App() {
             <Route path="/fes" element = {<Festival/>}/>
             <Route path="/fcst" element = {<Fcst1/>}/>
             <Route path="/fcstlist" element = {<FcstList/>}/>
+            <Route path="/mydiv" element = {<MyDiv1/>}/>
+            <Route path="/recoil1" element = {<RecoilMain/>}/>
             <Route path="/home" element = {<ImHome/>}/>
           </Routes>
       </main>
